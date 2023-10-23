@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 import RecipeList from "./components/RecipeList";
 import RecipeDetails from "./components/RecipeDetails";
-import recipes from "./data/recipes";
 import Footer from "./components/Footer";
+import recipes from "./data/recipes";
 
 const App = () => {
   const [selectedRecipe, setSelectedRecipe] = useState(null);
