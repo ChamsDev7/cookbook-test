@@ -1,22 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 
-import "./App.css";
+import RecipeList from "./components/RecipeList";
+import RecipeDetails from "./components/RecipeDetails";
+import recipes from "./data/recipes";
+import Footer from "./components/Footer";
 
-const recipes = [
-  {
-    author: "Jim",
-    name: "Chicken Curry",
-    description: "Delicious spicy chicken curry",
-  },
-  {
-    author: "Aravind",
-    name: "Hamburger",
-    description: "Juicy burger with toppings and a soft bun",
-  },
-];
+const App = () => {
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
 
-function App() {
-  return <div className="App">Let's add some content here</div>;
-}
+  const handleRecipeSelect = (recipe) => {
+    setSelectedRecipe(recipe);
+  };
+
+  return (
+    <>
+      <div className="container">
+        <RecipeList
+          recipes={recipes}
+          handleRecipeSelect={handleRecipeSelect}
+          selectedRecipe={selectedRecipe}
+        />
+        <RecipeDetails recipe={selectedRecipe} />
+      </div>
+      <Footer />
+    </>
+  );
+};
 
 export default App;
